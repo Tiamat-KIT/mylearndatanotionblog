@@ -1,15 +1,22 @@
 import Notionclient from "@/client/notion";
-import { ReactElement, JSXElementConstructor, ReactFragment } from "react";
+import { PageObjectResponse, PartialPageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
 export default function NotionPage(){
-    const val: string[] = []
+    //const data:string[] = []
     Notionclient.databases.query({
-        database_id: process.env.DATABASE_ID as string
+        database_id: process.env.DATABASE_ID as string,
+        "sorts":[
+            {
+                property: "タグ",
+                direction: "descending"
+            }
+        ]
     }).then((res)=> {
-        for (let n in res.results){
-            let item = res.results[n].object
-            val.push(item)
-        } 
+        for(let i in res.results){
+            //data.push(res.results[i].object)
+            console.log(res.results)
+        }
+        //console.log(data)
     })
-    return <p>{val}</p>
+    return (<p>TEST</p>)
 }
