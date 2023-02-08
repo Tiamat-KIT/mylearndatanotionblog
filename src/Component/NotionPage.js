@@ -34,25 +34,31 @@ export default async function NotionPage(){
             }
         ]
     })
-    // console.log(res.results[0].properties["タグ"].multi_select[0].name)
+    console.log(res.results[0].properties["タグ"].multi_select.length)
     for(let i in res.results){
-        const TagList = []
-        for(let n in res.results[i].properties["タグ"].multi_select.length){
-            TagList.push(res.results[i].properties["タグ"].multi_select[n].name)
-            
+        const TagData = res.results[i].properties["タグ"]
+        const TagObjList = []
+        for(let num in TagData.multi_select){
+            //console.log(num + "がnumの値")
+            const tag = res.results[i].properties["タグ"].multi_select[num].name
+            const tagColor = res.results[i].properties["タグ"].multi_select[num].color
+            TagObjList.push({tag: tag,TagColor: tagColor})
+            console.log(TagObjList)
         }
-        console(res.results[i].properties["タグ"].multi_select.name)
         PageDataList.push(
             {
                 id: res.results[i].id,
                 update_time: res.results[i].last_edited_time,
                 icon: res.results[i].icon,
-                Tags: TagList,
+                Tags: TagObjList,
                 Title: res.results[i].properties["名前"].title[0].text.content,
                 Url: res.results[i].url
             }
         )
+        console.log(PageDataList)
+    
     }
+    
     //console.log(PageDataList)
     return PageDataList
 }

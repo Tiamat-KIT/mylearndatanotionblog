@@ -1,4 +1,5 @@
 import NotionPage from "@/Component/NotionPage";
+import Link from "next/link";
 
 export default async function Home() {
   const PageData = await NotionPage()
@@ -17,9 +18,14 @@ export default async function Home() {
             <h1>{data.Title}</h1>
             {data.Tags.map((tag,i) => {
                 return(
-                  <p key={i}>{tag}</p>
+                  <div key={i} style={{display: "inline-flex",paddingLeft: "5px"}}>
+                    <p style={{backgroundColor: `${tag.TagColor}`,color: "white"}}>{tag.tag}</p>
+                  </div>
                 )
             })}
+            <div style={{padding: "5px"}} />
+            <Link href={data.Url}>内容はこちら</Link>
+            <p>最終更新日:{data.update_time.split("T")[0]}</p>
           </div>
         )
       })}
