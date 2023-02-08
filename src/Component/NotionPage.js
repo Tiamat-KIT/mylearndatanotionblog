@@ -34,6 +34,9 @@ export default async function NotionPage(){
             }
         ]
     })
+    if(!res.results.length){
+        throw new Error("データ取得ができてないよ")
+    }
     //console.log(res.results[0].properties["タグ"].multi_select.length)
     for(let i in res.results){
         const TagData = res.results[i].properties["タグ"]
