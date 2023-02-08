@@ -1,6 +1,8 @@
 import Footer from "@/Component/Footer"
 import "../../global.css"
 
+export const dynamic = "auto"
+
 export default function RootLayout({
   children,
 }: {

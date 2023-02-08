@@ -1,6 +1,8 @@
 import NotionPage from "@/Component/NotionPage";
 import Link from "next/link";
 
+export const revalidate = 0 //キャッシュ使いません
+
 export default async function Home() {
   const PageData = await NotionPage()
 
