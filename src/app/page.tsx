@@ -3,32 +3,35 @@ import Link from "next/link";
 
 export default async function Home() {
   const PageData = await NotionPage()
-  /*if(!PageData.length){
-    throw new Error("中身ないですね")
-  }else {
-    console.log("中身はある")
-  }*/
 
   return (
-    <>
-      <h1>MyNotion-LearnMemo</h1>
+    <div  className={``}>
+      <h1 className="hero text-5xl font-bold">MyNotion-LearnMemo</h1>
+      <div className={`pt-20 grid grid-rows-1 grid-flow-col justify-around`}>
       {PageData.map((data,i) => {
         return (
-          <div key={i}>
-            <h1>{data.Title}</h1>
-            {data.Tags.map((tag,i) => {
-                return(
-                  <div key={i} style={{display: "inline-flex",paddingLeft: "5px"}}>
-                    <p style={{backgroundColor: `${tag.TagColor}`,color: "white"}}>{tag.tag}</p>
-                  </div>
-                )
-            })}
-            <div style={{padding: "5px"}} />
-            <Link href={data.Url}>内容はこちら</Link>
-            <p>最終更新日:{data.update_time.split("T")[0]}</p>
+          <div key={i} className={`card card-bordered	border-slate-400 shadow-xl`}>
+            <div className={`card-body rounded-sm`}>
+              <h1 className={`font-bold text-3xl`}>{data.Title}</h1>
+              <div className="flex flex-row">
+              {data.Tags.map((tag,i) => {
+                  return(
+                    <div key={i} className={`justify-around badge badge-outline badge-${tag.TagColor}`}>
+                        <p className={`basis-1/2`}>
+                          {tag.tag}
+                        </p>
+                      </div>
+                    )
+                })}
+              </div>
+              <div className={``} />
+              <Link href={data.Url} className={`btn btn-success`}>内容はこちら</Link>
+              <p>最終更新日:{data.update_time.split("T")[0]}</p>
+            </div>
           </div>
         )
       })}
-    </>
+      </div>
+    </div>
   )
 }

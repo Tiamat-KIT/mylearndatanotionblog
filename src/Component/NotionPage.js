@@ -34,7 +34,7 @@ export default async function NotionPage(){
             }
         ]
     })
-    console.log(res.results[0].properties["タグ"].multi_select.length)
+    //console.log(res.results[0].properties["タグ"].multi_select.length)
     for(let i in res.results){
         const TagData = res.results[i].properties["タグ"]
         const TagObjList = []
@@ -43,7 +43,6 @@ export default async function NotionPage(){
             const tag = res.results[i].properties["タグ"].multi_select[num].name
             const tagColor = res.results[i].properties["タグ"].multi_select[num].color
             TagObjList.push({tag: tag,TagColor: tagColor})
-            console.log(TagObjList)
         }
         PageDataList.push(
             {
@@ -55,7 +54,7 @@ export default async function NotionPage(){
                 Url: res.results[i].url
             }
         )
-        console.log(PageDataList)
+        //console.log(PageDataList)
     
     }
     
