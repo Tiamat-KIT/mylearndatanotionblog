@@ -8,8 +8,8 @@ export default async function Home() {
 
   return (
     <div  className={``}>
-      <h1 className="hero text-5xl font-bold">MyNotion-LearnMemo</h1>
-      <div className={`py-10 grid grid-rows-2 grid-flow-col justify-around`}>
+      <h1 className="hero text-5xl font-bold pt-10">MyNotion-LearnMemo</h1>
+      <div className={`grid grid-rows-2 grid-flow-col justify-around`}>
       {PageData.map((data,i) => {
         return (
           <div key={i} className={`card card-bordered	border-slate-400 shadow-xl`}>
