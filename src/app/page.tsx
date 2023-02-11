@@ -12,7 +12,7 @@ export default async function Home() {
       <div className={`grid grid-rows-4 grid-flow-col justify-around`}>
       {PageData.map((data,i) => {
         return (
-          <div key={i} className={`card card-bordered	border-slate-400 shadow-xl`}>
+          <div key={i} className={`card card-bordered	border-slate-400 shadow-xl py-5`}>
             <div className={`card-body rounded-sm`}>
               <h1 className={`font-bold text-3xl`}>{data.Title}</h1>
               <div className="flex flex-row">
