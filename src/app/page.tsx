@@ -20,7 +20,7 @@ export default async function Home() {
                     {data.Tags.map((tag,i) => {
                       return(
                         <div key={i} className={`justify-around badge badge-outline badge-${tag.TagColor}`}>
-                          <p className={`basis-1/2`}>
+                          <p className={`basis-1/2 sm:basis-1`}>
                             {tag.tag}
                           </p>
                         </div>
