@@ -9,7 +9,7 @@ export default async function Home() {
   return (
     <div  className={``}>
       <h1 className="hero text-5xl font-bold pt-10">MyNotion-LearnMemo</h1>
-      <div className={`grid grid-rows-4 sm:grid-rows-6 grid-flow-col justify-around`}>
+      <div className={`grid grid-rows-4 grid-flow-col justify-around`}>
       {PageData.map((data,i) => {
         return (
           <div key={i} className={`pt-5`}>
