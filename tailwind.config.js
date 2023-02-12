@@ -4,6 +4,9 @@ const { purple, blue } = require('tailwindcss/colors');
 module.exports = {
   content: ["./src/**/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    screens: {
+
+    },
     extend: {},
   },
   plugins: [require("@tailwindcss/typography"),require("daisyui")],
@@ -15,7 +18,7 @@ module.exports = {
         mytheme: {
           purple: purple[200],
           blue: blue[200],
-          
+  
         },
       },
     ],
