@@ -9,7 +9,7 @@ export default async function Home() {
   return (
     <div  className={``}>
       <h1 className="hero text-5xl font-bold pt-10">MyNotion-LearnMemo</h1>
-      <div className={`grid sm:grid-rows-1 grid-rows-4 xl:grid-rows-4 grid-flow-col justify-around`}>
+      <div className={`grid xl:grid-rows-4 grid-flow-col justify-around`}>
       {PageData.map((data,i) => {
         return (
           <div key={i} className={`pt-5`}>
@@ -20,7 +20,7 @@ export default async function Home() {
                     {data.Tags.map((tag,i) => {
                       return(
                         <div key={i} className={`justify-around badge badge-outline badge-${tag.TagColor}`}>
-                          <p className={`basis-1/2 sm:basis-1`}>
+                          <p className={`basis-1/2`}>
                             {tag.tag}
                           </p>
                         </div>
