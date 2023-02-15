@@ -1,6 +1,8 @@
 import NotionPage from "@/Component/NotionPage";
 import Link from "next/link";
-
+import Card from "@/Component/Card";
+import Badge from "@/Component/Badge";
+import CardTitle from "@/Component/ResponsiveCardTitle";
 export const revalidate = 0 //キャッシュ使いません
 
 export default async function Home() {
@@ -8,21 +10,22 @@ export default async function Home() {
 
   return (
     <div  className={``}>
-      <h1 className="hero sm:text-5xl md:text-5xl lg:text-5xl xl:text-5xl 2xl:text-5xl font-bold pt-10">MyNotion-LearnMemo</h1>
-      <div className={`grid grid-rows-4 grid-flow-col justify-around`}>
+      <h1 className="hero phone:text-2xl tablet:text-3xl laptop:text-4xl desktop:text-5xl font-bold pt-10">MyNotion-LearnMemo</h1>
+      <div className={`flex flex-wrap justify-around`}>
       {PageData.map((data,i) => {
         return (
-          <div key={i} className={`pt-5`}>
-            <div className={`card card-bordered	border-slate-400 shadow-xl`}>
-              <div className={`card-body rounded-sm`}>
-                <h1 className={`font-bold text-3xl`}>{data.Title}</h1>
+          <div key={i} className="pt-5">
+              <Card padding="pt-5">
+                <CardTitle>{data.Title}</CardTitle>
                   <div className="flex flex-row">
                     {data.Tags.map((tag,i) => {
                       return(
-                        <div key={i} className={`justify-around badge badge-outline badge-${tag.TagColor}`}>
-                          <p className={`basis-1/2`}>
-                            {tag.tag}
-                          </p>
+                        <div key={i}>
+                          <Badge>
+                            <p className={`basis-1/2`}>
+                              {tag.tag}
+                            </p>
+                          </Badge>
                         </div>
                       )
                   })}
@@ -30,8 +33,7 @@ export default async function Home() {
                 <div className={``} />
                 <Link href={data.Url} className={`btn btn-success`}>内容はこちら</Link>
                 <p>最終更新日:{data.update_time.split("T")[0]}</p>
-              </div>
-            </div>
+              </Card>
           </div>
         )
       })}
