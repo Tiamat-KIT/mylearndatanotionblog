@@ -1,38 +1,19 @@
-import NotionPage from "@/Component/NotionPage";
-import Link from "next/link";
-import Card from "@/Component/Card";
-import Badge from "@/Component/Badge";
-import CardTitle from "@/Component/ResponsiveCardTitle";
+import GetNotionData from "@/Component/NotionPage";
 export const revalidate = 0 //キャッシュ使いません
 
 export default async function Home() {
-  const PageData = await NotionPage()
   return (
     <div>
-      <h1 className="hero phone:text-2xl tablet:text-3xl laptop:text-4xl desktop:text-5xl font-bold pt-10">MyNotion-LearnMemo</h1>
-      <div className={`flex flex-wrap justify-around`}>
-      {PageData.map((data,i) => {
-        return (
-          <div key={i} className="pt-5">
-              <Card padding="pt-5">
-                <CardTitle>{data.Title}</CardTitle>
-                  <div className="grid grid-cols-1">
-                    {data.Tag.TagName.map((tag_name,i) => {
-                      return(
-                        <div key={i} className="text-left">
-                          <Badge Tag={tag_name} />
-                        </div>
-                      )
-                  })}
-                </div>
-                <div className={``} />
-                <Link href={data.Url} className={`btn btn-success`}>内容はこちら</Link>
-                <p>最終更新日:{data.UpdateTime.split("T")[0]}</p>
-              </Card>
-          </div>
-        )
-      })}
+      <h1 className="hero phone:text-2xl tablet:text-3xl laptop:text-4xl desktop:text-5xl font-bold py-10">MyNotion-LearnMemo</h1>
+      <div className="form-control">
+        <div className="input-group">
+          <input type="text" placeholder="Tag's Search…" className="input input-bordered" />
+          <button className="btn btn-square">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+          </button>
+        </div>
       </div>
+      {await GetNotionData()}
     </div>
   )
 }
